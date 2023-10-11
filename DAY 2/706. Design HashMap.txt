@@ -1,0 +1,75 @@
+class ListNode:
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+        self.next = None
+
+class MyHashMap:
+
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.size = 1000
+        self.table = [None] * self.size
+
+    def _hash(self, key: int) -> int:
+        return key % self.size
+
+    def put(self, key: int, value: int) -> None:
+        """
+        Inserts a (key, value) pair into the HashMap. If the key already exists, update the corresponding value.
+        """
+        hash_key = self._hash(key)
+        if not self.table[hash_key]:
+            self.table[hash_key] = ListNode(key, value)
+        else:
+            current = self.table[hash_key]
+            while current:
+                if current.key == key:
+                    current.value = value
+                    return
+                if not current.next:
+                    break
+                current = current.next
+            current.next = ListNode(key, value)
+
+    def get(self, key: int) -> int:
+        """
+        Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key.
+        """
+        hash_key = self._hash(key)
+        current = self.table[hash_key]
+        while current:
+            if current.key == key:
+                return current.value
+            current = current.next
+        return -1
+
+    def remove(self, key: int) -> None:
+        """
+        Removes the key and its corresponding value if the map contains the mapping for the key.
+        """
+        hash_key = self._hash(key)
+        current = prev = self.table[hash_key]
+        if not current:
+            return
+        if current.key == key:
+            self.table[hash_key] = current.next
+            return
+        while current:
+            if current.key == key:
+                prev.next = current.next
+                return
+            prev, current = current, current.next
+
+# Example usage:
+myHashMap = MyHashMap()
+myHashMap.put(1, 1)
+myHashMap.put(2, 2)
+print(myHashMap.get(1))  # Output: 1
+print(myHashMap.get(3))  # Output: -1
+myHashMap.put(2, 1)
+print(myHashMap.get(2))  # Output: 1
+myHashMap.remove(2)
+print(myHashMap.get(2))  # Output: -1
