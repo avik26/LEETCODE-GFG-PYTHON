@@ -1,17 +1,21 @@
 class NestedIterator:
     def __init__(self, nestedList: [NestedInteger]):
-        self.flatten_list = []
+        self.stack = []
         self.flatten(nestedList)
 
     def flatten(self, nested_list):
-        for item in nested_list:
-            if item.isInteger():
-                self.flatten_list.append(item.getInteger())
-            else:
-                self.flatten(item.getList())
+        for i in range(len(nested_list) - 1, -1, -1):
+            self.stack.append(nested_list[i])
 
     def next(self) -> int:
-        return self.flatten_list.pop(0)
+        if self.hasNext():
+            return self.stack.pop().getInteger()
 
     def hasNext(self) -> bool:
-        return bool(self.flatten_list)
+        while self.stack:
+            top = self.stack[-1]
+            if top.isInteger():
+                return True
+            self.stack.pop()
+            self.flatten(top.getList())
+        return False
