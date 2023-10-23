@@ -1,7 +1,8 @@
 class Solution:
     def isPowerOfFour(self, n: int) -> bool:
-        if n <= 0:
+        # Check if n is a positive power of two
+        if n <= 0 or (n & (n - 1)) != 0:
             return False
-        if (n & (n - 1)) == 0 and (n & 0x55555555) == n:
-            return True
-        return False
+        
+        # Check if the only set bit is at an even position
+        return n & 0xAAAAAAAA == 0
