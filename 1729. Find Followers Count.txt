@@ -1,0 +1,6 @@
+# Write your MySQL query statement below
+SELECT user_id, COUNT(follower_id) AS followers_count
+FROM Followers
+GROUP BY user_id
+ORDER BY user_id;
+#Runtime: 993 ms, faster than 76.97% of MySQL online submissions for Find Followers Count.Memory Usage: 0B, less than 100.00% of MySQL online submissions for Find Followers Count.

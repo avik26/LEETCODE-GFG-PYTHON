@@ -1,0 +1,17 @@
+WITH FirstYearSales AS (
+    SELECT
+        s.product_id,
+        MIN(s.year) AS first_year
+    FROM Sales s
+    GROUP BY s.product_id
+)
+
+SELECT
+    f.product_id,
+    f.first_year,
+    s.quantity,
+    s.price
+FROM FirstYearSales f
+JOIN Sales s ON f.product_id = s.product_id AND f.first_year = s.year
+ORDER BY f.product_id;
+#Runtime: 1563 ms, faster than 89.70% of MySQL online submissions for Product Sales Analysis III.Memory Usage: 0B, less than 100.00% of MySQL online submissions for Product Sales Analysis III.

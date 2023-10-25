@@ -1,0 +1,8 @@
+SELECT MAX(num) AS num
+FROM (
+    SELECT num
+    FROM MyNumbers
+    GROUP BY num
+    HAVING COUNT(*) = 1
+) AS unique_numbers;
+#Runtime: 1084 ms, faster than 16.90% of MySQL online submissions for Biggest Single Number.Memory Usage: 0B, less than 100.00% of MySQL online submissions for Biggest Single Number.
