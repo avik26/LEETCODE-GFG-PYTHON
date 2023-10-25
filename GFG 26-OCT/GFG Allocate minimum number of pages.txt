@@ -1,0 +1,48 @@
+class Solution:
+    # Function to find the minimum number of pages.
+    def findPages(self, A, N, M):
+        # If there are more students than books, it's not possible.
+        if N < M:
+            return -1
+
+        # Define the search range.
+        low = max(A)  # The minimum possible answer.
+        high = sum(A)  # The maximum possible answer.
+
+        # Initialize the result.
+        result = -1
+
+        # Binary search to find the minimum maximum pages.
+        while low <= high:
+            mid = low + (high - low) // 2
+            if self.isAllocationPossible(A, N, M, mid):
+                result = mid  # If allocation is possible, update the result.
+                high = mid - 1  # Try to minimize the maximum pages.
+            else:
+                low = mid + 1  # Allocation is not possible, increase the pages.
+
+        return result
+
+    # Function to check if allocation is possible with given maximum pages.
+    def isAllocationPossible(self, A, N, M, max_pages):
+        students = 1
+        pages_allocated = 0
+
+        for i in range(N):
+            if A[i] > max_pages:
+                return False  # If any book cannot be allocated to a student, return False.
+            if pages_allocated + A[i] > max_pages:
+                students += 1
+                pages_allocated = A[i]
+            else:
+                pages_allocated += A[i]
+
+        return students <= M  # True if allocation is possible with M or fewer students.
+
+# Example usage:
+# N = 4
+# A = [12, 34, 67, 90]
+# M = 5
+# solution = Solution()
+# result = solution.findPages(A, N, M)
+# print(result)
