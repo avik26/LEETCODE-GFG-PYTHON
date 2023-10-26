@@ -1,0 +1,22 @@
+class MyStack:
+    
+    def __init__(self):
+        self.arr = []
+    
+    # Function to push an integer into the stack.
+    def push(self, data):
+        self.arr.append(data)
+    
+    # Function to remove an item from the top of the stack.
+    def pop(self):
+        if not self.arr:
+            return -1  # Stack is empty, return -1
+        else:
+            return self.arr.pop()  # Remove and return the top element
+
+# Example usage:
+stack = MyStack()
+print(stack.pop())  # Output: -1
+stack.push(4)
+stack.push(5)
+print(stack.pop())  # Output: 5
