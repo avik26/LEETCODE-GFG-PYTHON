@@ -1,0 +1,10 @@
+# Write your MySQL query statement below
+select employee_id, department_id
+from employee
+group by employee_id
+having count(employee_id)=1
+union
+select employee_id, department_id
+from employee 
+where primary_flag = 'Y'
+#Runtime: 1245 ms, faster than 34.49% of MySQL online submissions for Primary Department for Each Employee. Memory Usage: 0B, less than 100.00% of MySQL online submissions for Primary Department for Each Employee.

@@ -1,0 +1,26 @@
+WITH ManagerReports AS (
+    SELECT
+        e.employee_id AS manager_id,
+        e.name AS manager_name,
+        COUNT(DISTINCT r.employee_id) AS reports_count,
+        ROUND(AVG(r.age)) AS average_age
+    FROM
+        Employees e
+    LEFT JOIN
+        Employees r ON e.employee_id = r.reports_to
+    GROUP BY
+        e.employee_id, e.name
+    HAVING
+        COUNT(DISTINCT r.employee_id) > 0
+)
+
+SELECT
+    manager_id AS employee_id,
+    manager_name AS name,
+    reports_count,
+    average_age
+FROM
+    ManagerReports
+ORDER BY
+    manager_id;
+#Runtime: 1024 ms, faster than 90.55% of MySQL online submissions for The Number of Employees Which Report to Each Employee.Memory Usage: 0B, less than 100.00% of MySQL online submissions for The Number of Employees Which Report to Each Employee.

@@ -1,0 +1,6 @@
+# Write your MySQL query statement below
+SELECT customer_id
+FROM Customer
+GROUP BY customer_id
+HAVING COUNT(DISTINCT product_key) = (SELECT COUNT(*) FROM Product);
+#Runtime: 1063 ms, faster than 48.66% of MySQL online submissions for Customers Who Bought All Products.Memory Usage: 0B, less than 100.00% of MySQL online submissions for Customers Who Bought All Products.
