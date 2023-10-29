@@ -1,0 +1,27 @@
+# Node Class:
+class Node:
+    def __init__(self, val):
+        self.data = val
+        self.left = None
+        self.right = None
+
+# Function to return a list containing the preorder traversal of the tree.
+def preorder(root):
+    result = []
+    
+    # Base case: If the root is None, return an empty list.
+    if root is None:
+        return result
+    
+    # Visit the root node (add it to the result list).
+    result.append(root.data)
+    
+    # Recursively traverse the left subtree and append its traversal to the result.
+    if root.left:
+        result.extend(preorder(root.left))
+    
+    # Recursively traverse the right subtree and append its traversal to the result.
+    if root.right:
+        result.extend(preorder(root.right))
+    
+    return result

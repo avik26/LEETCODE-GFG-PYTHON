@@ -1,0 +1,12 @@
+class Solution:
+    def sumXOR(self, arr, n):
+        max_element = max(arr)
+        max_bits = len(bin(max_element)) - 2  # Number of bits required to represent the maximum element
+
+        total_xor = 0
+        for i in range(max_bits):
+            set_bits = sum(((num >> i) & 1) for num in arr)
+            clear_bits = n - set_bits
+            total_xor += (set_bits * clear_bits * (1 << i))
+
+        return total_xor
