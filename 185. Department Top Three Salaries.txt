@@ -1,0 +1,16 @@
+WITH RankedEmployees AS (
+    SELECT
+        e.departmentId,
+        e.name AS Employee,
+        e.salary AS Salary,
+        d.name AS Department,
+        DENSE_RANK() OVER (PARTITION BY e.departmentId ORDER BY e.salary DESC) AS `Rank`
+    FROM Employee e
+    JOIN Department d ON e.departmentId = d.id
+)
+
+SELECT Department, Employee, Salary
+FROM RankedEmployees
+WHERE `Rank` <= 3
+ORDER BY Department, `Rank`;
+#Runtime: 1879 ms, faster than 53.70% of MySQL online submissions for Department Top Three Salaries.Memory Usage: 0B, less than 100.00% of MySQL online submissions for Department Top Three Salaries.

@@ -1,0 +1,8 @@
+select id, count(*) as num from (
+    select requester_id as id from RequestAccepted
+    union all
+    select accepter_id from RequestAccepted
+) as friends_count
+group by id
+order by num desc limit 1;
+#Runtime: 518 ms, faster than 69.54% of MySQL online submissions for Friend Requests II: Who Has the Most Friends.Memory Usage: 0B, less than 100.00% of MySQL online submissions for Friend Requests II: Who Has the Most Friends.
