@@ -1,0 +1,13 @@
+class Solution:
+    
+    # Function to check if Kth bit is set or not.
+    def checkKthBit(self, n, k):
+        # Create a binary number with the Kth bit set (1 at the Kth position).
+        # For example, if K = 2, it would be 000...00100 (in binary).
+        mask = 1 << k
+        
+        # Perform a bitwise AND between the number N and the mask.
+        result = n & mask
+        
+        # If the result is greater than 0, the Kth bit is set.
+        return result > 0

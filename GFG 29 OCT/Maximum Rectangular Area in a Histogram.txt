@@ -1,0 +1,29 @@
+class Solution:
+    
+    # Function to find largest rectangular area possible in a given histogram.
+    def getMaxArea(self, histogram):
+        stack = []  # Initialize an empty stack to store indices
+        max_area = 0
+        i = 0
+
+        while i < len(histogram):
+            if not stack or histogram[i] >= histogram[stack[-1]]:
+                stack.append(i)
+                i += 1
+            else:
+                # Calculate area for the top of the stack as the height
+                # and width as the difference between the current index and the index
+                # at the top of the stack.
+                top = stack.pop()
+                width = i if not stack else i - stack[-1] - 1
+                area = histogram[top] * width
+                max_area = max(max_area, area)
+
+        # Calculate remaining areas for the elements left in the stack.
+        while stack:
+            top = stack.pop()
+            width = i if not stack else len(histogram) - stack[-1] - 1
+            area = histogram[top] * width
+            max_area = max(max_area, area)
+
+        return max_area
