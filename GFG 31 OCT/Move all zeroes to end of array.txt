@@ -1,0 +1,9 @@
+class Solution:
+    def pushZerosToEnd(self, arr, n):
+        non_zero_idx = 0  # Initialize a pointer for non-zero elements
+
+        # Traverse the array and move non-zero elements to the left
+        for current_idx in range(n):
+            if arr[current_idx] != 0:
+                arr[non_zero_idx], arr[current_idx] = arr[current_idx], arr[non_zero_idx]
+                non_zero_idx += 1

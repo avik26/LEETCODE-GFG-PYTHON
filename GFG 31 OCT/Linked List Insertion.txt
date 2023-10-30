@@ -1,0 +1,25 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class Solution:
+    # Function to insert a node at the beginning of the linked list.
+    def insertAtBegining(self, head, x):
+        new_node = Node(x)  # Create a new node with the given data
+        new_node.next = head  # Make the new node point to the current head
+        return new_node  # Return the new node as the new head
+
+    # Function to insert a node at the end of the linked list.
+    def insertAtEnd(self, head, x):
+        new_node = Node(x)  # Create a new node with the given data
+
+        if head is None:  # If the list is empty, the new node is the head
+            return new_node
+
+        current = head
+        while current.next is not None:
+            current = current.next  # Traverse to the end of the list
+
+        current.next = new_node  # Make the last node point to the new node
+        return head  # Return the original head
