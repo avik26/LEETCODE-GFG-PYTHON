@@ -1,0 +1,7 @@
+# Write your MySQL query statement below
+SELECT DISTINCT
+    (SELECT DISTINCT salary
+     FROM Employee
+     ORDER BY salary DESC
+     LIMIT 1 OFFSET 1) AS SecondHighestSalary;
+#Runtime: 552 ms, faster than 33.52% of MySQL online submissions for Second Highest Salary.Memory Usage: 0B, less than 100.00% of MySQL online submissions for Second Highest Salary.

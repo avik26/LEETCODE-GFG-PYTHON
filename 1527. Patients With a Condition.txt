@@ -1,0 +1,5 @@
+select *
+from Patients
+where conditions like '% DIAB1%' or 
+      conditions like 'DIAB1%'
+#Runtime: 604 ms, faster than 77.02% of MySQL online submissions for Patients With a Condition.Memory Usage: 0B, less than 100.00% of MySQL online submissions for Patients With a Condition.

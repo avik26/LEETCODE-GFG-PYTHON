@@ -1,0 +1,4 @@
+SELECT user_id, CONCAT(UPPER(SUBSTRING(name, 1, 1)), LOWER(SUBSTRING(name, 2))) AS name
+FROM Users
+ORDER BY user_id;
+#Runtime: 1328 ms, faster than 38.37% of MySQL online submissions for Fix Names in a Table.Memory Usage: 0B, less than 100.00% of MySQL online submissions for Fix Names in a Table.

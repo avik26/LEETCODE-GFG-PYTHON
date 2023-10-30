@@ -1,0 +1,16 @@
+from typing import List
+
+class Solution:
+    def sortByBits(self, arr: List[int]) -> List[int]:
+        # Define a custom sorting key function
+        def custom_sort_key(x):
+            # Count the number of 1's in the binary representation of x
+            count_ones = bin(x).count('1')
+            # Create a tuple with two elements: (count of 1's, x)
+            return (count_ones, x)
+
+        # Sort the array using the custom sorting key function
+        sorted_arr = sorted(arr, key=custom_sort_key)
+
+        return sorted_arr
+#Runtime: 69 ms, faster than 57.56% of Python3 online submissions for Sort Integers by The Number of 1 Bits.Memory Usage: 16.3 MB, less than 75.72% of Python3 online submissions for Sort Integers by The Number of 1 Bits.
