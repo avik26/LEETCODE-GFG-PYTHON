@@ -1,0 +1,6 @@
+select product_name, sum(unit) unit
+from Orders o, Products p
+where o.product_id = p.product_id and order_date like '2020-02%'
+group by product_name
+having sum(unit) >= 100
+#Runtime: 1611 ms, faster than 32.60% of MySQL online submissions for List the Products Ordered in a Period.Memory Usage: 0B, less than 100.00% of MySQL online submissions for List the Products Ordered in a Period.

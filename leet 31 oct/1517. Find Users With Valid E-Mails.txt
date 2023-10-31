@@ -1,0 +1,4 @@
+SELECT user_id, name, mail
+FROM Users
+WHERE mail REGEXP '^[A-Za-z][A-Za-z0-9_.-]*@leetcode\\.com$';
+#Runtime: 1547 ms, faster than 26.33% of MySQL online submissions for Find Users With Valid E-Mails.Memory Usage: 0B, less than 100.00% of MySQL online submissions for Find Users With Valid E-Mails.
