@@ -1,0 +1,15 @@
+class Solution:
+    def searchInSorted(self, arr, N, K):
+        left, right = 0, N - 1  # Initialize the search range
+
+        while left <= right:
+            mid = left + (right - left) // 2  # Calculate the middle index
+
+            if arr[mid] == K:
+                return 1  # Element found, return 1
+            elif arr[mid] < K:
+                left = mid + 1  # Adjust the search range to the right half
+            else:
+                right = mid - 1  # Adjust the search range to the left half
+
+        return -1  # Element not found, return -1

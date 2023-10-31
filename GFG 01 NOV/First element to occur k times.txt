@@ -1,0 +1,14 @@
+class Solution:
+    def firstElementKTime(self, a, n, k):
+        element_count = {}
+        
+        for i in range(n):
+            if a[i] in element_count:
+                element_count[a[i]] += 1
+            else:
+                element_count[a[i]] = 1
+            
+            if element_count[a[i]] == k:
+                return a[i]
+        
+        return -1
