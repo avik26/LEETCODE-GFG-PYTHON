@@ -1,0 +1,22 @@
+# Definition for a singly-linked list node.
+class ListNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+# Function to check if the linked list is circular.
+def isCircular(head):
+    if not head:
+        return False
+
+    slow = head
+    fast = head
+
+    while fast is not None and fast.next is not None:
+        slow = slow.next
+        fast = fast.next.next
+
+        if slow == fast:
+            return True
+
+    return False
