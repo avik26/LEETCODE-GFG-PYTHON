@@ -1,0 +1,22 @@
+# Definition of the node class
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+# Function to display the linked list in a single line
+class Solution:
+    def display(self, head):
+        current = head
+        while current is not None:
+            print(current.data, end=" ")
+            current = current.next
+
+# Example usage:
+# Create a sample linked list
+head = Node(1)
+head.next = Node(2)
+head.next.next = Node(3)
+
+solution = Solution()
+solution.display(head)  # Output: 1 2 3
