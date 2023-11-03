@@ -1,0 +1,16 @@
+class Solution:
+    def buildArray(self, target: List[int], n: int) -> List[str]:
+        target_ptr = 0
+        num = 1
+        stack_operations = []
+
+        while target_ptr < len(target):
+            if num == target[target_ptr]:
+                stack_operations.append("Push")
+                target_ptr += 1
+            else:
+                stack_operations.append("Push")
+                stack_operations.append("Pop")
+            num += 1
+
+        return stack_operations
