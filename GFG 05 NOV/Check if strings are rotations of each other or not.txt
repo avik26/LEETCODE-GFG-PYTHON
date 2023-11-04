@@ -1,0 +1,14 @@
+class Solution:
+    # Function to check if two strings are rotations of each other or not.
+    def areRotations(self, s1, s2):
+        if len(s1) != len(s2):
+            return False
+
+        # Step 1: Concatenate s1 with itself
+        concatenated = s1 + s1
+
+        # Step 2: Check if s2 is a substring of the concatenated string
+        if s2 in concatenated:
+            return True
+        else:
+            return False

@@ -1,0 +1,20 @@
+#User function Template for python3
+
+class MyQueue:
+    def __init__(self):
+        self.queue = []  # Initialize an empty list to represent the queue.
+        self.front = 0  # Initialize the front pointer.
+        self.rear = -1  # Initialize the rear pointer.
+
+    # Function to push an element x in a queue.
+    def push(self, x):
+        self.queue.append(x)  # Add the element to the end of the list (rear).
+        self.rear += 1
+
+    # Function to pop an element from the queue and return that element.
+    def pop(self):
+        if self.front > self.rear:  # If the queue is empty.
+            return -1
+        element = self.queue[self.front]  # Get the element at the front.
+        self.front += 1  # Move the front pointer to the next element.
+        return element

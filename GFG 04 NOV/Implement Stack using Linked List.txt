@@ -1,0 +1,23 @@
+class MyStack:
+    def __init__(self):
+        self.top = None  # Initialize the top of the stack.
+
+    # Function to push an integer into the stack.
+    def push(self, data):
+        new_node = self.StackNode(data)
+        new_node.next = self.top
+        self.top = new_node
+
+    # Function to remove an item from the top of the stack.
+    def pop(self):
+        if self.top is None:
+            return -1  # Stack is empty, return -1.
+        popped_value = self.top.data
+        self.top = self.top.next
+        return popped_value
+
+    # Inner class to define a node in the stack.
+    class StackNode:
+        def __init__(self, data):
+            self.data = data
+            self.next = None

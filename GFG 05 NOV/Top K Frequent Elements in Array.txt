@@ -1,0 +1,25 @@
+class Solution:
+    def topK(self, nums, k):
+        # Step 1: Count the frequency of each element
+        frequency = {}
+        for num in nums:
+            if num in frequency:
+                frequency[num] += 1
+            else:
+                frequency[num] = 1
+        
+        # Step 2: Sort the elements based on frequency and value
+        sorted_elements = sorted(nums, key=lambda x: (-frequency[x], -x))
+        
+        # Step 3: Get the unique elements with the highest frequencies
+        unique_elements = set()
+        result = []
+        for num in sorted_elements:
+            if num not in unique_elements:
+                unique_elements.add(num)
+                result.append(num)
+                if len(result) == k:
+                    break
+        
+        # Step 4: Return the top k elements
+        return result[:k]

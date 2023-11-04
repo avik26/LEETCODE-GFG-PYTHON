@@ -1,0 +1,17 @@
+class Solution:
+    def transitionPoint(self, arr, n):
+        left, right = 0, n - 1  # Initialize the left and right pointers.
+
+        while left <= right:
+            mid = (left + right) // 2  # Calculate the mid-point.
+
+            if arr[mid] == 1 and (mid == 0 or arr[mid - 1] == 0):
+                return mid  # Found the transition point.
+
+            if arr[mid] == 0:
+                left = mid + 1  # Move the left pointer to the right.
+            else:
+                right = mid - 1  # Move the right pointer to the left.
+
+        return -1  # If no transition point is found, return -1.
+
