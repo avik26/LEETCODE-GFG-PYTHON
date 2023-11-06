@@ -1,0 +1,21 @@
+class Node:
+    def __init__(self, val):
+        self.data = val
+        self.left = None
+        self.right = None
+
+# Function to perform post-order traversal on a binary tree and return the result in an array.
+def postOrder(root):
+    result = []
+    
+    def post_order_recursive(node):
+        if node:
+            # Traverse the left subtree
+            post_order_recursive(node.left)
+            # Traverse the right subtree
+            post_order_recursive(node.right)
+            # Visit the current node and append it to the result
+            result.append(node.data)
+    
+    post_order_recursive(root)
+    return result
