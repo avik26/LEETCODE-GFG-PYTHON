@@ -1,0 +1,6 @@
+class Solution:
+    def search(self, arr, n, k):
+        for i in range(n):
+            if arr[i] == k:
+                return i + 1  # Position is 1-based
+        return -1  # If K is not found in the array
