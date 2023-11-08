@@ -1,0 +1,18 @@
+class Solution:
+    def binSort(self, A, N):
+        # Initialize two pointers for left (0) and right (N-1) ends of the array.
+        left, right = 0, N - 1
+        
+        while left <= right:
+            # If the left pointer points to 1 and the right pointer points to 0,
+            # swap them to maintain the increasing order.
+            if A[left] == 1 and A[right] == 0:
+                A[left], A[right] = A[right], A[left]
+            
+            # Move the left pointer to the right if it points to 0.
+            if A[left] == 0:
+                left += 1
+            
+            # Move the right pointer to the left if it points to 1.
+            if A[right] == 1:
+                right -= 1

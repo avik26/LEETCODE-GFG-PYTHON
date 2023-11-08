@@ -1,0 +1,19 @@
+class Solution:
+    def columnWithMaxZeros(self, arr, N):
+        max_zeros = 0  # Initialize the maximum count of 0s.
+        max_zeros_column = -1  # Initialize the column index with maximum 0s.
+
+        for col in range(N):
+            zeros_count = 0  # Initialize the count of 0s for the current column.
+            for row in range(N):
+                if arr[row][col] == 0:
+                    zeros_count += 1
+
+            if zeros_count > max_zeros:
+                max_zeros = zeros_count
+                max_zeros_column = col
+
+        if max_zeros == 0:
+            return -1  # No column with 0s found.
+        else:
+            return max_zeros_column

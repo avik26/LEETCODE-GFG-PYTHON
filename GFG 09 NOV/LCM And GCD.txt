@@ -1,0 +1,11 @@
+class Solution:
+    def lcmAndGcd(self, A, B):
+        def gcd(a, b):
+            if b == 0:
+                return a
+            return gcd(b, a % b)
+
+        lcm = (A * B) // gcd(A, B)
+        gcd_value = gcd(A, B)
+
+        return [lcm, gcd_value]
