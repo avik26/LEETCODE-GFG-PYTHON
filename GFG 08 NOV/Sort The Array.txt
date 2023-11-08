@@ -1,0 +1,5 @@
+class Solution:
+    def sortArr(self, arr, n):
+        # Use the sorted function to sort the list in ascending order
+        arr = sorted(arr)
+        return arr

@@ -1,0 +1,21 @@
+class Node:
+    def __init__(self, val):
+        self.right = None
+        self.data = val
+        self.left = None
+
+# Function to count leaf nodes in a binary tree
+def countLeaves(root):
+    if root is None:
+        return 0
+
+    # If the current node is a leaf node, return 1
+    if root.left is None and root.right is None:
+        return 1
+
+    # Recursively count leaf nodes in the left and right subtrees
+    left_leaves = countLeaves(root.left)
+    right_leaves = countLeaves(root.right)
+
+    # Return the sum of leaf nodes in left and right subtrees
+    return left_leaves + right_leaves

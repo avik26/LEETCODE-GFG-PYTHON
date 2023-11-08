@@ -1,0 +1,15 @@
+class Solution:
+    # Function to return list of integers visited in snake pattern in matrix.
+    def snakePattern(self, matrix):
+        snake_pattern = []
+        n = len(matrix)
+
+        for i in range(n):
+            if i % 2 == 0:  # For even rows, read left to right
+                for j in range(n):
+                    snake_pattern.append(matrix[i][j])
+            else:  # For odd rows, read right to left
+                for j in range(n - 1, -1, -1):
+                    snake_pattern.append(matrix[i][j])
+
+        return snake_pattern
