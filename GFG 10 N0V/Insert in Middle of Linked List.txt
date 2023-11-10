@@ -1,0 +1,29 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+# Function to insert a node in the middle of the linked list.
+def insertInMid(head, node):
+    if not head:
+        head = node
+    else:
+        slow = head
+        fast = head
+
+        # Move fast by two steps and slow by one step
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        # Insert the new node after the slow pointer
+        node.next = slow.next
+        slow.next = node
+
+# Function to print the linked list.
+def printLinkedList(head):
+    current = head
+    while current:
+        print(current.data, end=" ")
+        current = current.next
+    print()

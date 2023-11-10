@@ -1,0 +1,30 @@
+class Solution:
+    def printMinNumberForPattern(self, s):
+        n = len(s)
+        i = 0
+        ans = "1"
+        cur = 2
+
+        while i < n:
+            if s[i] == 'D':
+                pos = i
+                while pos < n and s[pos] == 'D':
+                    pos += 1
+
+                dx = pos - i
+                nx = cur + dx - 1
+
+                ans = ans[:-1]
+
+                while nx >= cur - 1:
+                    ans += str(nx)
+                    nx -= 1
+
+                cur += dx
+                i += dx
+            else:
+                ans += str(cur)
+                cur += 1
+                i += 1
+
+        return ans

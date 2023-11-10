@@ -1,0 +1,7 @@
+class Solution:
+    def thirdLargest(self, a, n):
+        if n < 3:
+            return -1
+
+        a.sort(reverse=True)
+        return a[2]

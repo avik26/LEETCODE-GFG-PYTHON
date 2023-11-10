@@ -1,0 +1,28 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class MyQueue:
+    def __init__(self):
+        self.front = None
+        self.rear = None
+
+    # Function to push an element into the queue.
+    def push(self, item):
+        new_node = Node(item)
+        if not self.rear:
+            self.front = self.rear = new_node
+            return
+        self.rear.next = new_node
+        self.rear = new_node
+
+    # Function to pop the front element from the queue.
+    def pop(self):
+        if not self.front:
+            return -1
+        popped_item = self.front.data
+        self.front = self.front.next
+        if not self.front:
+            self.rear = None
+        return popped_item
