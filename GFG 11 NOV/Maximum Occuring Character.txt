@@ -1,0 +1,18 @@
+class Solution:
+    def getMaxOccurringChar(self, s):
+        char_freq = {}
+        
+        for char in s:
+            if char in char_freq:
+                char_freq[char] += 1
+            else:
+                char_freq[char] = 1
+        
+        max_char = ''
+        max_freq = 0
+        for char, freq in char_freq.items():
+            if freq > max_freq or (freq == max_freq and char < max_char):
+                max_char = char
+                max_freq = freq
+        
+        return max_char
