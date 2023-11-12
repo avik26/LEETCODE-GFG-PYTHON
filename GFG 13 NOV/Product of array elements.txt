@@ -1,0 +1,12 @@
+#User function Template for python3
+
+# arr is the array
+# n is the number of elements in the array
+# mod is the modulo value
+def product(arr, n, mod):
+    result = 1
+
+    for num in arr:
+        result = (result * num) % mod
+
+    return result
