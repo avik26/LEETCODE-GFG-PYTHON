@@ -1,0 +1,16 @@
+class Solution:
+    def countPalindromicSubsequence(self, s: str) -> int:
+        result = 0
+        n = len(s)
+
+        for i in range(26):  # Considering only lowercase English letters
+            char = chr(ord('a') + i)
+
+            first_occurrence = s.find(char)
+            last_occurrence = s.rfind(char)
+
+            if first_occurrence != -1 and last_occurrence != -1 and first_occurrence < last_occurrence:
+                unique_chars_between = set(s[first_occurrence + 1 : last_occurrence])
+                result += len(unique_chars_between)
+
+        return result

@@ -1,0 +1,19 @@
+from typing import List
+
+class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        n = len(nums)
+
+        # Calculate the sum of the first k elements
+        current_sum = sum(nums[:k])
+        max_sum = current_sum
+
+        # Iterate through the array and update the sum using a sliding window
+        for i in range(k, n):
+            current_sum = current_sum + nums[i] - nums[i - k]
+            max_sum = max(max_sum, current_sum)
+
+        # Calculate the average of the maximum sum
+        max_average = max_sum / k
+
+        return max_average
