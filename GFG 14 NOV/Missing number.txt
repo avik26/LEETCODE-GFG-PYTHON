@@ -1,0 +1,11 @@
+def missingNumber(A, N):
+    # Calculate the expected sum of the first N natural numbers
+    expected_sum = (N * (N + 1)) // 2
+    
+    # Calculate the actual sum of the elements in the array
+    actual_sum = sum(A)
+    
+    # The missing number is the difference between the expected sum and the actual sum
+    missing_number = expected_sum - actual_sum
+    
+    return missing_number

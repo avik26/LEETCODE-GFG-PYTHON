@@ -1,0 +1,33 @@
+class Solution:
+    def UncommonChars(self, A, B):
+        # Initialize frequency dictionaries for strings A and B
+        freq_A = {}
+        freq_B = {}
+        
+        # Update frequency dictionary for string A
+        for char in A:
+            freq_A[char] = freq_A.get(char, 0) + 1
+        
+        # Update frequency dictionary for string B
+        for char in B:
+            freq_B[char] = freq_B.get(char, 0) + 1
+        
+        # Find uncommon characters in both strings
+        uncommon_chars = []
+        
+        # Check for characters in string A that are not in B
+        for char, freq in freq_A.items():
+            if char not in freq_B:
+                uncommon_chars.append(char)
+        
+        # Check for characters in string B that are not in A
+        for char, freq in freq_B.items():
+            if char not in freq_A:
+                uncommon_chars.append(char)
+        
+        # If there are no uncommon characters, return "-1"
+        if not uncommon_chars:
+            return "-1"
+        
+        # Sort and join the characters to form the final result
+        return ''.join(sorted(uncommon_chars))
