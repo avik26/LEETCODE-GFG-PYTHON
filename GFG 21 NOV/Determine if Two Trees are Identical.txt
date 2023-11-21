@@ -1,0 +1,21 @@
+class Solution:
+    # Function to check if two trees are identical.
+    def isIdentical(self, root1, root2):
+        # Base case: If both roots are None, they are identical.
+        if not root1 and not root2:
+            return True
+        
+        # If one of the roots is None and the other is not, they are not identical.
+        if not root1 or not root2:
+            return False
+        
+        # Check if the current nodes have the same value.
+        if root1.data != root2.data:
+            return False
+        
+        # Recursively check the left and right subtrees.
+        left_identical = self.isIdentical(root1.left, root2.left)
+        right_identical = self.isIdentical(root1.right, root2.right)
+        
+        # Return True only if both left and right subtrees are identical.
+        return left_identical and right_identical
