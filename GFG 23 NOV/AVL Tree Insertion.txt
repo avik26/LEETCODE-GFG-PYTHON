@@ -1,0 +1,79 @@
+class Solution:
+    def insertToAVL(self, root, key):
+        # Base case: If the tree is empty, create a new node
+        if not root:
+            return Node(key)
+
+        # Perform standard BST insert
+        if key < root.data:
+            root.left = self.insertToAVL(root.left, key)
+        elif key > root.data:
+            root.right = self.insertToAVL(root.right, key)
+        else:
+            return root  # Duplicate keys are not allowed in AVL tree
+
+        # Update height of the current node
+        root.height = 1 + max(self.get_height(root.left), self.get_height(root.right))
+
+        # Get the balance factor to check if the node is unbalanced
+        balance = self.get_balance(root)
+
+        # Left-Left case (LL rotation)
+        if balance > 1 and key < root.left.data:
+            return self.right_rotate(root)
+
+        # Right-Right case (RR rotation)
+        if balance < -1 and key > root.right.data:
+            return self.left_rotate(root)
+
+        # Left-Right case (LR rotation)
+        if balance > 1 and key > root.left.data:
+            root.left = self.left_rotate(root.left)
+            return self.right_rotate(root)
+
+        # Right-Left case (RL rotation)
+        if balance < -1 and key < root.right.data:
+            root.right = self.right_rotate(root.right)
+            return self.left_rotate(root)
+
+        return root
+
+    def get_height(self, node):
+        if not node:
+            return 0
+        return node.height
+
+    def get_balance(self, node):
+        if not node:
+            return 0
+        return self.get_height(node.left) - self.get_height(node.right)
+
+    def update_height(self, node):
+        if not node:
+            return 0
+        node.height = 1 + max(self.get_height(node.left), self.get_height(node.right))
+        return node.height
+
+    def right_rotate(self, y):
+        x = y.left
+        T2 = x.right
+
+        x.right = y
+        y.left = T2
+
+        self.update_height(y)
+        self.update_height(x)
+
+        return x
+
+    def left_rotate(self, x):
+        y = x.right
+        T2 = y.left
+
+        y.left = x
+        x.right = T2
+
+        self.update_height(x)
+        self.update_height(y)
+
+        return y
