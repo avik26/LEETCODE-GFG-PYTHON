@@ -1,0 +1,16 @@
+class Solution:
+    def nthRowOfPascalTriangle(self, n):
+        mod = 10**9 + 7
+        out = [1] * n
+        prev = [1] * n
+
+        for i in range(1, n):
+            for j in range(1, i):
+                out[j] = (prev[j] + prev[j - 1]) % mod
+            prev = out.copy()
+
+        return out
+
+def printAns(ans):
+    for x in ans:
+        print(x, end=" ")
