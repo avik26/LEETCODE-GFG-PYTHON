@@ -1,0 +1,48 @@
+class Solution:
+    def detectCycle(self, V, adj):
+        dsu = [-1] * V
+        g = [set() for _ in range(V)]
+
+        for i in range(V):
+            for x in adj[i]:
+                g[i].add(x)
+
+        def find(p):
+            if dsu[p] < 0:
+                return p
+            dsu[p] = find(dsu[p])
+            return dsu[p]
+
+        def merge(x, y):
+            if dsu[x] > dsu[y]:
+                x, y = y, x
+            dsu[x] += dsu[y]
+            dsu[y] = x
+
+        vis = [False] * V
+
+        def dfs(node, par):
+            ans = False
+            vis[node] = True
+
+            for child in g[node]:
+                if child != par:
+                    x = find(node)
+                    y = find(child)
+
+                    if x == y:
+                        return True
+
+                    merge(x, y)
+                    ans = ans or dfs(child, node)
+
+            return int(ans)
+
+
+        ans = False
+
+        for i in range(V):
+            if not vis[i]:
+                ans = ans or dfs(i, -1)
+
+        return int(ans)
