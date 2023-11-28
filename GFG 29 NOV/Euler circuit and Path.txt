@@ -1,0 +1,28 @@
+class Solution {
+public:
+	int isEulerCircuit(int V, vector<int>adj[]){
+	    // Code here
+	   int oddDegreeCount = 0;
+
+        // Count the degree of each vertex
+        unordered_map<int, int> degree;
+        for (int i = 0; i < V; ++i) {
+            degree[i] = adj[i].size();
+            if (degree[i] % 2 != 0) {
+                oddDegreeCount++;
+            }
+        }
+
+        if (oddDegreeCount == 0) {
+            // All vertices have even degrees, so it's an Eulerian circuit
+            return 2;
+        } else if (oddDegreeCount == 2) {
+            // Exactly two vertices have odd degrees, so it's an Eulerian path
+            return 1;
+        } else {
+            // Other cases, it doesn't have an Eulerian circuit or path
+            return 0;
+        }
+
+	}
+};
