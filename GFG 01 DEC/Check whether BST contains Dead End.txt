@@ -1,0 +1,23 @@
+class Solution:
+    def isDeadEnd(self, root):
+        # Code here
+        leafs = []
+        arr = []
+        def func(root):
+            if root is None:
+                return
+            if root.left is None and root.right is None:
+                leafs.append(root.data)
+            else:
+                func(root.left)
+                arr.append(root.data)
+                func(root.right)
+        
+        func(root)
+        for a in leafs:
+            if a-1 in arr and a+1 in arr:
+                return 1
+            elif a == 1 and a+1 in arr:
+                return 1
+        
+        return 0
