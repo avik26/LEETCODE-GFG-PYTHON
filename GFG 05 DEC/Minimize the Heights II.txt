@@ -1,0 +1,17 @@
+class Solution:
+    def getMinDiff(self,arr, n, k):
+        # Step 1: Sort the array
+        arr.sort()
+    
+        # Step 2: Initialize the initial difference
+        ans = arr[n - 1] - arr[0]
+    
+        # Step 3: Iterate through the array
+        for i in range(1, n):
+            if arr[i] < k:
+                continue
+            temp_max = max(arr[i - 1] + k, arr[n - 1] - k)
+            temp_min = min(arr[0] + k, arr[i] - k)
+            ans = min(ans, abs(temp_max - temp_min))
+    
+        return ans
