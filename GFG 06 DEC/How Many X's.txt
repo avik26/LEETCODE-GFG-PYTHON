@@ -1,0 +1,8 @@
+class Solution:    
+    def countX(self, start_range, end_range, target_digit):
+        digit_count = 0
+
+        for num in range(start_range + 1, end_range):
+            digit_count += str(num).count(str(target_digit))
+
+        return digit_count
