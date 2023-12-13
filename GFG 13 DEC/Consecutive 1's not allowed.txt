@@ -1,0 +1,9 @@
+class Solution:
+    def countStrings(self, n):
+        
+        modulo = 10**9 + 7
+        
+        a, b = 1, 1
+        for _ in range(n):
+            a, b = b, (a + b)%modulo
+        return b
