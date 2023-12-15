@@ -1,0 +1,9 @@
+class Solution:
+    def nthPoint(self,n):
+        # Code here
+        mod = 10**9+7
+        a , b = 1, 2
+        if n == 1: return 1
+        for i in range(n-2):
+            a , b = b %mod , (a+b)%mod
+        return b
