@@ -1,0 +1,12 @@
+class Solution:
+    def gameOfXor(self, array_size, array):
+        # If the array size is even, the XOR sum will be 0.
+        if array_size % 2 == 0:
+            return 0
+
+        xor_sum = 0
+        # Iterate through the array with a step of 2 to access elements at odd indices.
+        for index in range(0, array_size, 2):
+            xor_sum ^= array[index]
+
+        return xor_sum
