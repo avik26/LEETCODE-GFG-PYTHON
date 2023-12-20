@@ -1,5 +1,5 @@
 class Solution(object):
-    def maxProductDifference(self, nums):
+    def maxProductDifference(self, nums): 
         largest, secondLargest = 0, 0
         smallest, secondSmallest = float('inf'), float('inf')
 
