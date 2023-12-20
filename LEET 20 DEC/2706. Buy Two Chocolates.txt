@@ -1,0 +1,9 @@
+class Solution:
+    def buyChoco(self, prices: List[int], money: int) -> int:
+        heapq.heapify(prices)
+        first_min_cost = heapq.heappop(prices)
+        second_min_cost = heapq.heappop(prices)        
+        
+        leftover = money - (first_min_cost + second_min_cost)
+
+        return leftover if leftover >= 0 else money
