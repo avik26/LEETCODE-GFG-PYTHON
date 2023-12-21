@@ -1,0 +1,17 @@
+class Solution:
+    def minCandy(self, num_children, child_ratings):
+        # Initialize a list to store the number of candies for each child
+        candies = [1] * num_children
+
+        # Iterate forward to assign candies based on increasing ratings
+        for i in range(1, num_children):
+            if child_ratings[i] > child_ratings[i - 1]:
+                candies[i] = candies[i - 1] + 1
+
+        # Iterate backward to ensure fairness for decreasing ratings
+        for i in range(num_children - 1, 0, -1):
+            if child_ratings[i - 1] > child_ratings[i] and candies[i - 1] <= candies[i]:
+                candies[i - 1] = candies[i] + 1
+
+        # Return the total number of candies needed
+        return sum(candies)
