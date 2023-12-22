@@ -1,0 +1,24 @@
+from typing import List
+
+class Solution:
+    class Pair:
+        def __init__(self, s, f, ind):
+            self.s = s
+            self.f = f
+            self.ind = ind
+
+    @staticmethod
+    def maxMeetings(N: int, S: List[int], F: List[int]) -> List[int]:
+        # code here
+        meetings = [Solution.Pair(S[i], F[i], i + 1) for i in range(N)]
+        meetings.sort(key=lambda x: x.f)
+        
+        ans = []
+        last = -1
+        for i in range(N):
+            if meetings[i].s > last:
+                ans.append(meetings[i].ind)
+                last = meetings[i].f
+        
+        ans.sort()
+        return ans
