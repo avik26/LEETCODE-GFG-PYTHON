@@ -1,0 +1,24 @@
+class Solution:
+    
+    #Function for finding determinant of matrix.
+    def determinantOfMatrix(self,matrix,n):
+        # code here
+        if n == 1:
+            return matrix[0][0]
+        
+        if n == 2:
+            return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+
+        det = 0  
+       
+        for i in range(n):
+          
+            minor_matrix = [row[:i] + row[i+1:] for row in matrix[1:]]
+            
+
+            cofactor = matrix[0][i] * ((-1) ** i)
+            
+
+            det += cofactor * self.determinantOfMatrix(minor_matrix, n-1)
+        
+        return det
