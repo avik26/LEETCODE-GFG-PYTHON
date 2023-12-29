@@ -1,0 +1,19 @@
+class Solution:
+    def kSubstrConcat(self, n, s, k):
+        # Your Code Hereif 
+        if n % k != 0:
+            return 0
+        dic = {}
+        i = 0
+        j = k
+        while i<len(s)-1:
+            temp = s[i:j]
+            if temp in dic:
+                dic[temp] +=1
+            else:
+                dic[temp] = 1
+            i +=k
+            j +=k
+        if len(dic)>2:
+            return 0
+        return 1
