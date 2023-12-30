@@ -1,0 +1,8 @@
+from collections import Counter
+
+class Solution:
+    def winner(self, arr, n):
+        d = Counter(arr)
+        max_occurrence = max(d.values())
+        winners = [key for key, value in d.items() if value == max_occurrence]
+        return [min(winners), max_occurrence]
