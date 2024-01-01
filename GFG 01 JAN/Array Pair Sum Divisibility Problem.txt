@@ -1,0 +1,12 @@
+class Solution:
+    def canPair(self, nums, k):
+        n = len(nums)
+        if n % 2 == 1:
+            return False
+        s = set()
+        for i in range(n):
+            if (k - nums[i]) % k in s:  
+                s.remove((k - nums[i]) % k)
+            else:
+                s.add(nums[i] % k)
+        return False if s else True
