@@ -1,0 +1,14 @@
+class Solution():
+    def maxSumWithK(self, a, n, k):
+        ans=-float('inf')
+        mn=[float('inf')]*(n+k)
+        mn[k-1]=0
+        pfs=a[0]
+        for i,v in enumerate(a):
+            if i>=1:
+                pfs+=v
+            i+=k
+            mn[i]=min(mn[i-1],pfs)
+            ans=max(ans,pfs-mn[i-k])
+        return ans
+
