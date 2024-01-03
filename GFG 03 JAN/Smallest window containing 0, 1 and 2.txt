@@ -1,0 +1,26 @@
+#User function Template for python3
+class Solution:
+    def smallestSubstring(self, S):
+        # Code here
+        if '0' not in S or '1' not in S or '2' not in S:
+            return -1
+        L=[]
+        c=10**5+1
+        for i in S:
+            if L==[]:
+                L.append(i)
+            elif L[0]!=i:
+                L.append(i)
+            elif L[0]==i:
+                L.pop(0)
+                L.append(i)
+                j=1
+                while(len(L)>1 and j):
+                    if(L[0]==L[1]):
+                        L.pop(0)
+                    else:
+                        j=0
+            if '0' in L and '1' in L and '2' in L:
+                c=min(c,len(L))
+                L=[]
+        return c
