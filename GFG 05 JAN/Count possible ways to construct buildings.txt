@@ -1,0 +1,6 @@
+class Solution:
+    def TotalWays(self, N):
+        a, b = 1, 2
+        for i in range(N - 1):
+            a, b = b, (a + b) % 1000000007
+        return (b * b) % 1000000007
