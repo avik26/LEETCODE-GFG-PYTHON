@@ -1,0 +1,26 @@
+class Solution:
+    def splitArray(self, nums, length, segments):
+        # Initialize the search space
+        left, right = max(nums), sum(nums)
+
+        # Binary search loop
+        while left < right:
+            mid = left + (right - left) // 2
+            current_sum, segment_count = 0, 0
+
+            # Iterate through the array to count segments
+            for num in nums:
+                current_sum += num
+
+                # Check if the current segment exceeds the limit
+                if current_sum > mid:
+                    current_sum, segment_count = num, segment_count + 1
+
+            # Adjust search space based on segment count
+            if segment_count >= segments:
+                left = mid + 1
+            else:
+                right = mid
+
+        # The final result is the upper bound of the search space
+        return right
