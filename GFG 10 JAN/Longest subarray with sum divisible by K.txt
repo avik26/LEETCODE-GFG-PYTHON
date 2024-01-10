@@ -1,0 +1,19 @@
+class Solution:
+    def longSubarrWthSumDivByK (self,arr,  n, K) : 
+        #Complete the function
+        sum=0
+        sub_array=0
+        dict={}
+        
+        for i in range(0,n):
+            sum = sum+arr[i]
+            if sum%K==0:
+                sub_array = max(sub_array , i+1)
+            
+            if sum%K in dict:
+                sub_array = max(sub_array, i-dict[sum%K])
+            else:
+                dict[sum%K]=i
+                
+        return sub_array
+
