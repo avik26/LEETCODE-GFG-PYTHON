@@ -1,0 +1,11 @@
+class Solution:
+    def maxAncestorDiff(self, root):
+        self.ans = 0
+        def dfs(root, curMin, curMax):
+            if root:
+                self.ans = max(self.ans, root.val - curMin, curMax - root.val)
+                curMin, curMax = min(curMin, root.val), max(curMax, root.val)
+                dfs(root.left, curMin, curMax)
+                dfs(root.right, curMin, curMax)
+        dfs(root, root.val, root.val)
+        return self.ans
