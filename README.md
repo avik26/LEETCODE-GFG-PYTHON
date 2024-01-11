@@ -1,2 +1,2 @@
 # LEETCODE-PYTHON
-Collection of LeetCode questions to ace the coding interview! - Created using [LeetHub](https://github.com/QasimWani/LeetHub)
+All potd's of leetcode and geeksforgeeks.
