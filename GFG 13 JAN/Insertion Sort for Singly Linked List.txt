@@ -1,0 +1,27 @@
+class Solution:
+    def insertionSort(self, head):
+        if not head or not head.next:
+            return head
+        
+        dummy = Node(-1)
+        dummy.next = head
+
+        current = head
+
+        while current.next:
+            if current.next.data < current.data:
+                to_insert = current.next
+                current.next = current.next.next
+
+                # Find the correct position for insertion
+                ptr = dummy
+                while ptr.next and ptr.next.data < to_insert.data:
+                    ptr = ptr.next
+
+                to_insert.next = ptr.next
+                ptr.next = to_insert
+            else:
+                current = current.next
+
+        return dummy.next
+
