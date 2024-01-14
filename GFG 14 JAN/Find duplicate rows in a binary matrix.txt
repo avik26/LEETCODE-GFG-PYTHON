@@ -1,0 +1,16 @@
+class Solution:
+    def repeatedRows(self, arr, m ,n):
+        #code here
+        rowset = set()
+        res = []
+        for r in range(m):
+            row = ""
+            for c in range(n):
+                row+= str(arr[r][c])
+                
+            if row in rowset:
+                res.append(r)
+            else:
+                rowset.add(row)
+        
+        return res
