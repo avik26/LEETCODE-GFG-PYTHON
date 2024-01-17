@@ -1,0 +1,22 @@
+from collections import Counter
+class Solution:
+    def uniquePerms(self, arr, n):
+        # code here 
+        def rec() :
+            if len(l)==n :
+                a=l.copy()
+                s.add(tuple(a))
+                return
+            else :
+                for x in c :
+                    if c[x] > 0 :
+                        l.append(x)
+                        c[x] -=1
+                        rec()
+                        l.pop()
+                        c[x] +=1
+        c=Counter(arr)
+        s=set()
+        l=[]   
+        rec()     
+        return sorted(s)
