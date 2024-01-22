@@ -1,0 +1,33 @@
+#User function Template for python3
+
+from collections import deque
+
+class Solution:
+    def printPaths(self, root, target_sum):
+        if not root:
+            return []
+
+        # Using a queue to perform level-order traversal
+        queue, result = deque(), []
+
+        # Initial state: [current_node, current_sum, current_route]
+        queue.append([root, root.data, [root.data]])
+
+        while queue:
+            current_node, current_sum, current_route = queue.popleft()
+
+            # Check if the current path satisfies the target_sum
+            if current_sum == target_sum:
+                result.append(current_route[:])
+
+            # Explore left child
+            if current_node.left:
+                left_child = current_node.left
+                queue.append([left_child, current_sum + left_child.data, current_route + [left_child.data]])
+
+            # Explore right child
+            if current_node.right:
+                right_child = current_node.right
+                queue.append([right_child, current_sum + right_child.data, current_route + [right_child.data]])
+
+        return result
