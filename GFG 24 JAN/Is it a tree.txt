@@ -1,0 +1,29 @@
+class Solution:
+    def isTree(self, n, m, edges):
+        parent = list(range(n))
+        rank = [0] * n
+        
+        def find(k):
+            if parent[k] != k:
+                parent[k] = find(parent[k])
+            return parent[k]
+        
+        def union_if_different(k, l):
+            parent_k, parent_l = find(k), find(l)
+            if parent_k == parent_l:
+                return False
+            rank_k, rank_l = rank[parent_k], rank[parent_l]
+            if rank_k > rank_l:
+                parent[parent_l] = parent_k
+            elif rank_l > rank_k:
+                parent[parent_k] = parent_l
+            else:
+                parent[parent_l] = parent_k
+                rank[parent_k] += 1
+            return True
+        
+        for u, v in edges:
+            if not union_if_different(u, v):
+                return 0
+        root = find(parent[0])
+        return 1 if all(find(p) == root for p in parent) else 0
