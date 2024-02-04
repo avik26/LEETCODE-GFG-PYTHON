@@ -1,0 +1,22 @@
+class Solution:
+    def subLinkedList(self, l1, l2): 
+        s1=""
+        s2=""
+        curr=l1
+        while curr:
+            s1+=str(curr.data)
+            curr=curr.next
+        curr=l2
+        while curr:
+            s2+=str(curr.data)
+            curr=curr.next
+        s1=int(s1)
+        s2=int(s2)
+        ans=list(str(abs(s1-s2)))
+        ans=[int(x) for x in ans]
+        head=Node(ans[0])
+        curr=head
+        for i in ans[1:]:
+            curr.next=Node(i)
+            curr=curr.next
+        return head
