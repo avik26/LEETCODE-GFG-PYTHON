@@ -1,0 +1,179 @@
+<html>
+<head>
+    <style>
+        /* Add your css styling here */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .nav {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            background-color: #555;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #555;
+            width: 200px;
+            list-style: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .dropdown-content-item:hover {
+            background-color: #777;
+        }
+
+        .search-bar {
+            width: 200px;
+            height: 40px;
+            border: none;
+            border-radius: 20px;
+            padding: 10px;
+            outline: none;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .carousel-images {
+            display: flex;
+            width: 400%;
+            height: 100%;
+            animation: slide 10s infinite;
+        }
+
+        .carousel-image {
+            width: 25%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0%);
+            }
+            25% {
+                transform: translateX(-25%);
+            }
+            50% {
+                transform: translateX(-50%);
+            }
+            75% {
+                transform: translateX(-75%);
+            }
+            100% {
+                transform: translateX(0%);
+            }
+        }
+
+        .columns {
+            display: flex;
+            width: 100%;
+            margin: 20px;
+        }
+
+        .column {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .column-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .column-text {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">My Hotel</div>
+        <ul class="nav">
+            <li class="nav-item">Stay with Us</li>
+            <li class="nav-item">Restaurants</li>
+            <li class="nav-item">Spa Facilities</li>
+            <li class="nav-item">Weddings</li>
+            <li class="nav-item"><input type="text" class="search-bar" placeholder="Search..."></li>
+            <li class="nav-item">Contact Us</li>
+            <li class="nav-item dropdown">Discovery
+                <ul class="dropdown-content">
+                    <li class="dropdown-content-item">Natural Surrounding</li>
+                    <li class="dropdown-content-item">Where to Visit</li>
+                    <li class="dropdown-content-item">Take a Tour</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="hotel1.jpg" class="carousel-image">
+            <img src="hotel2.jpg" class="carousel-image">
+            <img src="hotel3.jpg" class="carousel-image">
+            <img src="hotel4.jpg" class="carousel-image">
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column">
+            <div class="column-title">About Us</div>
+            <div class="column-text">We are a luxury hotel that offers the best service and amenities for our guests. Whether you are looking for a relaxing getaway, a romantic escape, or a business trip, we have something for you. Come and experience the hospitality and comfort of My Hotel.</div>
+        </div>
+        <div class="column">
+            <div class="column-title">Our Rooms</div>
+            <div class="column-text">We have a variety of rooms to suit your needs and preferences. From cozy standard rooms to spacious suites, you will find the perfect accommodation for your stay. All our rooms are equipped with modern facilities, such as Wi-Fi, TV, minibar, and more.</div>
+        </div>
+        <div class="column">
+            <div class="column-title">Our Location</div>
+            <div class="column-text">We are conveniently located in the heart of the city, close to many attractions and landmarks. You can easily explore the culture, history, and entertainment of the city, or enjoy the natural beauty of the nearby parks and gardens. We also offer free parking and shuttle service for our guests.</div>
+        </div>
+    </div>
+</body>
+</html>
