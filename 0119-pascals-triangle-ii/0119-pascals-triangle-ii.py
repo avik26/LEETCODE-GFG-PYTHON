@@ -6,4 +6,4 @@ class Solution:
             for j in range(1, i):
                 ans[i - j] += ans[i - j - 1]
 
-        return ans
+        return ans 
