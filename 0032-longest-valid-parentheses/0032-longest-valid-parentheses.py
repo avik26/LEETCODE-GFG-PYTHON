@@ -1,6 +1,6 @@
 class Solution:
     def longestValidParentheses(self, s: str) -> int:
-        stack = []  # Stack to store the indices of open parentheses
+        stack = []  # Stack store the indices of open parentheses
         max_length = 0  # Maximum length of valid parentheses 
 
         # Initialize a variable to keep track of the last invalid index
