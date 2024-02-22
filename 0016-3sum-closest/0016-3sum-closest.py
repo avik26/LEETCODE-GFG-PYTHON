@@ -1,7 +1,7 @@
 class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
         nums.sort()
-        closest_sum = float('inf')  # Initialize to positive infinity
+        closest_sum = float('inf') 
         
         for i in range(len(nums) - 2):
             left, right = i + 1, len(nums) - 1
